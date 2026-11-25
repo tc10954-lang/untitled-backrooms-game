@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  background: #050505;
+  color: #d8cfa8;
+  font-family: 'Courier New', Courier, monospace;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  image-rendering: pixelated;
+}
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #17150d 0%, #050505 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  z-index: 20;
+  text-align: center;
+  padding: 20px;
+}
+
+#overlay h1 {
+  font-size: 3rem;
+  letter-spacing: 0.4rem;
+  color: #e6d68a;
+  text-shadow: 0 0 12px rgba(230, 214, 138, 0.4);
+}
+
+#overlay .warn {
+  color: #b85d43;
+}
+
+#start-btn {
+  margin-top: 12px;
+  padding: 14px 28px;
+  background: #242012;
+  color: #e6d68a;
+  border: 2px solid #8c7f47;
+  font-family: inherit;
+  font-size: 1.1rem;
+  cursor: pointer;
+  letter-spacing: 0.15rem;
+}
+
+#start-btn:hover {
+  background: #3b341d;
+}
+
+#hud {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 10;
+  font-size: 0.95rem;
+  text-shadow: 2px 2px 0 #000;
+  pointer-events: none;
+}
+
+#hud-prompt {
+  margin-top: 10px;
+  color: #fff3b0;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Subtle CRT scanline & vignette horror filter */
+.crt {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 15;
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.28) 50%),
+    radial-gradient(circle, transparent 55%, rgba(0, 0, 0, 0.85) 100%);
+  background-size: 100% 4px, 100% 100%;
+}
+
