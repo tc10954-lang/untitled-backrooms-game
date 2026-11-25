@@ -3,13 +3,13 @@ export class AudioEngine {
     this.ctx = null;
     this.humGain = null;
     this.stepTimer = 0;
+    this.heartTimer = 0;
   }
 
   init() {
     if (this.ctx) return;
     this.ctx = new (window.AudioContext || window.webkitAudioContext)();
 
-    // 60Hz Fluorescent Light Hum
     const osc = this.ctx.createOscillator();
     const filter = this.ctx.createBiquadFilter();
     this.humGain = this.ctx.createGain();
@@ -47,6 +47,44 @@ export class AudioEngine {
     osc.stop(now + 0.1);
   }
 
+  playMonsterStep(intensity) {
+    if (!this.ctx || intensity <= 0) return;
+    const now = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(52, now);
+    osc.frequency.exponentialRampToValueAtTime(22, now + 0.16);
+
+    gain.gain.setValueAtTime(0.22 * intensity, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.16);
+
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.17);
+  }
+
+  playHeartbeat(intensity) {
+    if (!this.ctx || intensity <= 0) return;
+    const now = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(65, now);
+    osc.frequency.exponentialRampToValueAtTime(30, now + 0.12);
+
+    gain.gain.setValueAtTime(0.25 * intensity, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.13);
+
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.14);
+  }
+
   playSwitch() {
     if (!this.ctx) return;
     const now = this.ctx.currentTime;
@@ -64,5 +102,25 @@ export class AudioEngine {
     gain.connect(this.ctx.destination);
     osc.start(now);
     osc.stop(now + 0.17);
+  }
+
+  playJumpscare() {
+    if (!this.ctx) return;
+    const now = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(140, now);
+    osc.frequency.linearRampToValueAtTime(620, now + 0.12);
+    osc.frequency.linearRampToValueAtTime(90, now + 0.55);
+
+    gain.gain.setValueAtTime(0.35, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.6);
+
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.62);
   }
 }
