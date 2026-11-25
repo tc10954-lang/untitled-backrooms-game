@@ -1,1 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LEVEL 0 // SUB-LIMINAL</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="overlay">
+    <h1>LEVEL 0</h1>
+    <p>WASD to Move &bull; SHIFT to Sprint &bull; MOUSE to Aim Flashlight &bull; E to Interact/Hide</p>
+    <p class="warn">Find and flip 3 Breaker Switches to power the Exit.</p>
+    <button id="start-btn">ENTER THE BACKROOMS</button>
+  </div>
+
+  <div id="hud" class="hidden">
+    <div class="hud-item">DEPTH: <span id="hud-level">LEVEL 0</span></div>
+    <div class="hud-item">BREAKERS: <span id="hud-breakers">0 / 3</span></div>
+    <div class="hud-item">BATTERY: <span id="hud-battery">100%</span></div>
+    <div id="hud-prompt"></div>
+  </div>
+
+  <canvas id="game"></canvas>
+  <div class="crt"></div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
 
