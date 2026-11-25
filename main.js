@@ -306,7 +306,7 @@ function render() {
 
   ctx.save();
   ctx.beginPath();
-  ctx.moveTo(lightPoly.x, lightPoly.y);
+  ctx.moveTo(lightPoly[0].x, lightPoly[0].y);
   for (let i = 1; i < lightPoly.length; i++) {
     ctx.lineTo(lightPoly[i].x, lightPoly[i].y);
   }
