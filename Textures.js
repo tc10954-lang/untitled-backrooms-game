@@ -17,7 +17,6 @@ export function generateTextures() {
         }
       }
     }
-    // Subtle damp water stain
     ctx.fillStyle = 'rgba(45, 38, 18, 0.28)';
     ctx.fillRect(3, 4, 5, 4);
   });
@@ -26,12 +25,10 @@ export function generateTextures() {
   textures.wall = makePixelCanvas(16, 16, (ctx) => {
     ctx.fillStyle = '#c9b86b';
     ctx.fillRect(0, 0, 16, 16);
-    // Vertical wallpaper stripes
     ctx.fillStyle = '#b5a358';
     for (let x = 0; x < 16; x += 4) {
       ctx.fillRect(x, 0, 2, 16);
     }
-    // Dark baseboard trim
     ctx.fillStyle = '#4a3d24';
     ctx.fillRect(0, 13, 16, 3);
     ctx.fillStyle = '#2b2212';
@@ -44,7 +41,6 @@ export function generateTextures() {
     ctx.fillRect(1, 1, 14, 14);
     ctx.fillStyle = '#363b38';
     ctx.fillRect(2, 2, 12, 12);
-    // Vents
     ctx.fillStyle = '#181a19';
     ctx.fillRect(4, 4, 8, 1);
     ctx.fillRect(4, 6, 8, 1);
@@ -55,7 +51,7 @@ export function generateTextures() {
   textures.breakerOff = makePixelCanvas(16, 16, (ctx) => {
     ctx.fillStyle = '#5c5952';
     ctx.fillRect(3, 2, 10, 12);
-    ctx.fillStyle = '#c9382a'; // Red indicator light
+    ctx.fillStyle = '#c9382a';
     ctx.fillRect(7, 4, 2, 2);
     ctx.fillStyle = '#1f1e1c';
     ctx.fillRect(6, 8, 4, 4);
@@ -64,7 +60,7 @@ export function generateTextures() {
   textures.breakerOn = makePixelCanvas(16, 16, (ctx) => {
     ctx.fillStyle = '#5c5952';
     ctx.fillRect(3, 2, 10, 12);
-    ctx.fillStyle = '#4ce067'; // Green indicator light
+    ctx.fillStyle = '#4ce067';
     ctx.fillRect(7, 4, 2, 2);
     ctx.fillStyle = '#1f1e1c';
     ctx.fillRect(6, 7, 4, 4);
@@ -78,6 +74,31 @@ export function generateTextures() {
     for (let y = 2; y < 16; y += 3) {
       ctx.fillRect(2, y, 12, 2);
     }
+  });
+
+  // 6. Monster 1: The Hound (16x16 twitching wire-beast)
+  textures.hound = makePixelCanvas(16, 16, (ctx) => {
+    ctx.fillStyle = '#0d0b0b';
+    ctx.fillRect(4, 3, 8, 10);
+    // Spindly limbs
+    ctx.fillRect(1, 2, 3, 2);
+    ctx.fillRect(12, 2, 3, 2);
+    ctx.fillRect(1, 11, 3, 2);
+    ctx.fillRect(12, 11, 3, 2);
+    // Glowing red mouth/gash (no eyes!)
+    ctx.fillStyle = '#d92b2b';
+    ctx.fillRect(6, 6, 4, 2);
+  });
+
+  // 7. Monster 2: The Stalker (16x16 tall shadow figure with white eyes)
+  textures.stalker = makePixelCanvas(16, 16, (ctx) => {
+    ctx.fillStyle = '#050507';
+    ctx.fillRect(5, 1, 6, 14);
+    ctx.fillRect(3, 4, 10, 7);
+    // Piercing pale eyes
+    ctx.fillStyle = '#f2f2f2';
+    ctx.fillRect(6, 3, 1, 2);
+    ctx.fillRect(9, 3, 1, 2);
   });
 
   return textures;
